@@ -1,13 +1,17 @@
+
 // components/Sidebar.tsx
 import { useRouter, usePathname, useSearchParams  } from 'next/navigation'; // instead of next/router
 //import { HomeIcon, ClipboardListIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 import { RiDashboardHorizontalFill } from "react-icons/ri";
 import { MdOutlineInventory } from "react-icons/md";
+import { FaPeopleGroup } from "react-icons/fa6";
+
 import { FaCog } from "react-icons/fa";
 
 const navItems = [
   { label: 'Dashboard', path: '/dashboard', icon: RiDashboardHorizontalFill },
   { label: 'Inventory', path: '/inventory', icon: MdOutlineInventory },
+  { label: 'Personels', path: '/personels', icon: FaPeopleGroup },
   { label: 'Settings', path: '/settings', icon: FaCog },
 ];
 
