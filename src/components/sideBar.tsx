@@ -21,7 +21,7 @@ export default function Sidebar() {
   const searchParams = useSearchParams();
 
   return (
-    <aside className="h-screen w-56 bg-[#003399] text-white flex flex-col py-4 px-3">
+    <aside className="h-screen w-56 bg-gray-700 text-white flex flex-col py-4 px-3">
       <div className="text-2xl font-bold mb-6 pl-2">ERI-CHAN'S INVENTORY</div>
       <nav className="space-y-2">
         {navItems.map(({ label, path, icon: Icon }) => {

@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { RiLoader2Fill } from "react-icons/ri";
+import { FiLoader } from "react-icons/fi";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { auth, provider } from "@/lib/firebaseServices";
@@ -27,16 +29,21 @@ const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-
+  const [loading, setLoading] = useState(false);
   const handleLogin = async () => {
     setError(null);
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Login successful");
+      
       router.push('/dashboard'); // redirect after login
+      
     } catch (err: any) {
+      alert("Login failed: " + err.message);
       setError(err.message);
     }
+    setLoading(false);
   };
   // const handleGoogleSignIn = async () => {
   //   try {
@@ -44,7 +51,7 @@ const router = useRouter();
   //     setUser(result.user);
   //     onLogin(result.user); // Call the onLogin prop with the user
   //     onChangeAction?.({ isLogin: false, isRegister: false });
-  //     //window.location.href = '/dashboard'; // Redirect to dashboard after login
+  //     window.location.href = '/dashboard'; // Redirect to dashboard after login
   //     console.log("User signed in:", result.user);
   //   } catch (error) {
   //     console.error("Login failed:", error);
@@ -52,7 +59,7 @@ const router = useRouter();
   // };
 
   return (
-    <Card className="w-full max-w-sm z-50 p-3">
+    <Card className="relative w-full max-w-sm z-50 p-3">
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>
         <CardDescription>
@@ -103,6 +110,12 @@ const router = useRouter();
         </Button> */}
        
       </CardFooter>
+      {loading && (
+        <div className="absolute top-0 w-full h-full flex items-center justify-center bg-gray-200 opacity-50">
+          <div className="loader"><FiLoader className="animate-spin w-6 h-6"/></div>
+        </div>
+      )}  
+        
       
     </Card>
   )

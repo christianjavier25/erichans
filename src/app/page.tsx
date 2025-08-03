@@ -19,9 +19,9 @@ export default function Home() {
       
       <div className="realtive flex flex-col items-center justify-center min-h-screen p-8 bg-gray-100">
         <h1 className="text-4xl font-bold mb-6">
-          Welcome to Eri-Chan's Inventory
+          Welcome to Eri-Chan's
         </h1>
-        <p className="text-lg mb-4">Manage your inventory efficiently.</p>
+        
         <Button variant={"default"} className="mb-4" onClick={() => setAction({ isLogin: true, isRegister: false })}>
           
           Login
